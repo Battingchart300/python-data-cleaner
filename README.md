@@ -2,6 +2,12 @@
 
 Python tool that cleans messy CSV and Excel files - removes duplicates fixes dates and empty values, in one command.
 
+## Web demo
+
+Try it in the browser, no install needed: [Data Cleaner Space on Hugging Face](https://huggingface.co/spaces/Battingchart300/python-data-cleaner)
+
+The demo is the same tool with a web UI (`app.py`, Gradio). Run it locally with `pip install gradio` and `python app.py`.
+
 ## What it cleans
 
 - Fully empty rows — removed

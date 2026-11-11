@@ -27,9 +27,14 @@ def clean_text(value):
     return value
 
 
+def _is_text(series: pd.Series) -> bool:
+    """Text column? Works for both the old object dtype and pandas 3 str dtype."""
+    return series.dtype == object or pd.api.types.is_string_dtype(series)
+
+
 def clean_numbers(series: pd.Series) -> pd.Series:
     """Turn strings like '1 200,50' into numbers, if the column looks numeric."""
-    if series.dtype != object:
+    if not _is_text(series):
         return series
     cleaned = (
         series.astype(str)
@@ -47,7 +52,7 @@ def clean_numbers(series: pd.Series) -> pd.Series:
 
 def clean_dates(series: pd.Series) -> pd.Series:
     """Parse a date-like column to YYYY-MM-DD, if most values parse."""
-    if series.dtype != object:
+    if not _is_text(series):
         return series
     parsed = pd.to_datetime(series, errors="coerce", dayfirst=True, format="mixed")
     non_empty = series.notna() & (series.astype(str).str.strip() != "")
