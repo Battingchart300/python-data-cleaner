@@ -1,0 +1,52 @@
+# python-data-cleaner
+
+Python tool that cleans messy CSV and Excel files - removes duplicates fixes dates and empty values, in one command.
+
+## What it cleans
+
+- Fully empty rows — removed
+- Whitespace in text cells — trimmed
+- Duplicate rows — removed (after cleaning, so `1 200,50` and `1200.50` count as one)
+- Dates — parsed to `YYYY-MM-DD` (columns with "date" or "datum" in the name)
+- Numbers — `1 200,50` becomes `1200.50`
+- A short report prints what changed: rows in/out, duplicates and empty rows removed
+
+Case of names is left as-is — the tool does not guess it.
+
+## Quick start
+
+```bash
+pip install -r requirements.txt
+python main.py examples/messy.csv -o examples/clean.csv
+```
+
+Any CSV or XLSX file works:
+
+```bash
+python main.py my_data.csv
+python main.py my_data.xlsx -o my_data_clean.xlsx
+```
+
+Without `-o`, the output is saved next to the input as `<name>_clean.<ext>`.
+
+## Before / after
+
+`examples/messy.csv` (10 rows) → `examples/clean.csv` (7 rows):
+
+| Before | After |
+| --- | --- |
+| `  Mária Kováčová  ` | `Mária Kováčová` |
+| `12.03.2024`, `14/03/2024` | `2024-03-12`, `2024-03-14` |
+| `1 200,50` | `1200.5` |
+| same row twice | once |
+| empty row | removed |
+
+Run it yourself and compare the two files in `examples/`.
+
+## Tech
+
+Python 3, pandas, openpyxl. Everything runs locally, no upload, no account.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
