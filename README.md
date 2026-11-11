@@ -6,6 +6,8 @@ Python tool that cleans messy CSV and Excel files - removes duplicates fixes dat
 
 Try it in the browser, no install needed: [Data Cleaner Space on Hugging Face](https://huggingface.co/spaces/Battingchart300/python-data-cleaner)
 
+> ⚠️ Note: the live demo currently doesn't run. The Space is on ZeroGPU hardware, the app doesn't use a GPU, and switching to CPU basic requires a Hugging Face PRO subscription.
+
 The demo is the same tool with a web UI (`app.py`, Gradio). Run it locally with `pip install gradio` and `python app.py`.
 
 ## What it cleans
