@@ -51,6 +51,25 @@ Without `-o`, the output is saved next to the input as `<name>_clean.<ext>`.
 
 Run it yourself and compare the two files in `examples/`.
 
+Raw lines, before → after:
+
+```csv
+# messy.csv
+  Mária Kováčová  ,maria.kovacova@mail.com,2024-03-13,999.99,  Košice
+Ján Novák,jan.novak@mail.com,12.03.2024,"1 200,50",Bratislava
+Ján Novák,jan.novak@mail.com,12.03.2024,"1 200,50",Bratislava
+
+# clean.csv
+Mária Kováčová,maria.kovacova@mail.com,2024-03-13,999.99,Košice
+Ján Novák,jan.novak@mail.com,2024-03-12,1200.5,Bratislava
+```
+
+Whitespace trimmed, date fixed to `YYYY-MM-DD`, number fixed to `1200.5`, the duplicate row gone.
+
+## Tests
+
+Tests live in `tests/` (pytest). Run them with `pip install pytest` and `pytest -v`. GitHub Actions runs them on every push.
+
 ## Tech
 
 Python 3, pandas, openpyxl. Everything runs locally, no upload, no account.
