@@ -1,6 +1,6 @@
 # python-data-cleaner
 
-Python tool that cleans messy CSV and Excel files - removes duplicates fixes dates and empty values, in one command.
+I kept running into messy CSV files. Extra spaces everywhere, the same row twice, dates written in different formats in one column. Cleaning that by hand is slow and boring, so I wrote this tool. One command, and the file comes out clean.
 
 ## Web demo
 
@@ -11,6 +11,8 @@ Try it in the browser, no install needed: [Data Cleaner Space on Hugging Face](h
 The demo is the same tool with a web UI (`app.py`, Gradio). Run it locally with `pip install gradio` and `python app.py`.
 
 ## What it cleans
+
+It does six things, and nothing else:
 
 - Fully empty rows — removed
 - Whitespace in text cells — trimmed
@@ -72,8 +74,10 @@ Tests live in `tests/` (pytest). Run them with `pip install pytest` and `pytest 
 
 ## Tech
 
-Python 3, pandas, openpyxl. Everything runs locally, no upload, no account.
+Python 3, pandas, openpyxl. Everything runs locally — nothing is uploaded anywhere.
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+Made by PTS6845 — https://battingchart300.github.io
